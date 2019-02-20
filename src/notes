@@ -1,0 +1,16 @@
+ // $.ajax({
+    //   type: 'POST',
+    //   url: '/api/meetings',
+    //   contentType: 'application/json',
+    //   data: { id : 'menuId' },
+    //   success: function(data) {
+    //     console.log('meetings ')
+    //
+    //   },
+    //
+    //   error: function(xhr, status, err) {
+    //     console.log('error')
+    //     // ideally, show error to user.
+    //
+    //   }
+    // }).done()

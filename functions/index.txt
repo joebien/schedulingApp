@@ -1,0 +1,203 @@
+const functions = require('firebase-functions');
+const express = require('express')
+
+const path = require('path');
+
+const NodeGeocoder = require('node-geocoder');
+
+var bodyParser = require('body-parser')
+const $ = require('jquery');
+const app = express();
+app.use( bodyParser.json() );
+
+app.use(express.json());       // to support JSON-encoded bodies
+//app.use(express.urlencoded()); // to support URL-encoded bodies
+
+app.use(express.static(path.resolve(__dirname, './react-ui/build')));
+
+const firebase = require("firebase/app");
+
+require("firebase/firestore");
+
+const config = {
+  apiKey: "AIzaSyB3CX-HTO5JjOJI0NIMB5ycOBjeRNVfsaA",
+  authDomain: "schedule2-dc598.firebaseapp.com",
+  databaseURL: "https://schedule2-dc598.firebaseio.com",
+  projectId: "schedule2-dc598",
+  storageBucket: "schedule2-dc598.appspot.com",
+  messagingSenderId: "168082543022"
+};
+
+firebase.initializeApp(config);
+
+const db = firebase.firestore();
+const usersRef = db.collection('users')
+
+
+
+//get day meetings
+app.get('/meetings', (req, res)=> {
+
+
+
+  const id = 'activeDays.' + Object.keys(req.query)[0]
+
+
+  const queriedDocs = []
+
+
+
+  usersRef.where(id, "==", true)
+          .get()
+          .then((querySnapshot)=> {
+            querySnapshot.forEach((doc)=> {
+              queriedDocs.push(doc.data())
+            })
+            return null;
+          })
+          .catch(error => {
+            console.error(error);
+            res.error(500);
+          })
+          .then(()=> {
+            console.log('qdocs ', queriedDocs)
+            res.json(queriedDocs)
+            return null;
+          })
+          .catch(error => {
+            console.error(error);
+            res.error(500);
+          });
+  });
+
+
+//get all meetings
+app.get('/allmeetings', (req, res)=> {
+
+
+  const listUsers = []
+
+  usersRef.get().then((snapshot) => {
+
+
+
+    //console.log('snapshot ',snapshot[0].data())
+
+    snapshot.forEach((doc) => {
+
+
+
+      listUsers.push(doc.data())
+    })
+
+
+    res.json(listUsers);
+    return null
+  }).catch(error => {
+    console.error(error);
+    res.error(500);
+  })
+})
+
+//get one meeting
+app.get('/oneMeeting', (req, res) =>{
+  let document
+  const id = Object.keys(req.query)[0]
+  console.log('id ',id)
+
+  usersRef.doc(id)
+          .get()
+          .then((doc)=>
+          {if (doc.exists) {
+            document = doc.data()
+            res.json(document)
+
+          }
+          else {
+            console.log("No such document!");
+          }
+            return null;
+          }).catch(error => {
+            console.error(error);
+            res.error(500);
+          });
+
+});
+
+//add new Meeting
+app.post('/meetings', (req, res) =>{
+
+  setData(req.body)
+  res.json(req.body);
+
+
+})
+
+//put edited meeting
+app.put('/meetingEdit', (req, res)=> {
+
+console.log('express app fired')
+  const meeting = req.body
+
+  usersRef.doc(meeting.id).set(meeting)
+
+}  )
+
+
+//get geocode from address
+app.get('/geoCode',(req, res)=>{
+
+  console.log('req ',req.query)
+  let geocode = {}
+
+  const options = {
+    provider: 'google',
+    httpAdapter: 'https',
+    apiKey: 'AIzaSyDLrXS1u5G3NjV9gWFaJoSmpahyDiZ2zSI',
+    formatter: null         // 'gpx', 'string', ...
+  };
+
+  const geocoder = NodeGeocoder(options);
+
+  geocoder.geocode(req.query.address, (err, res)=> {
+    try{ geocode.lat = res[0].latitude}
+    catch(e){
+      //next(err)
+    }
+    try{ geocode.lng = res[0].longitude }
+    catch(e){ console.log('catch(e)', e) }
+    next(err);
+  }).then(()=>{
+    console.log('geocode ',geocode)
+    res.send(geocode)
+    return null
+  })
+          .catch(error => {
+            console.error(error);
+            res.error(500);
+          })
+
+})
+
+
+// const setData = (event) =>{
+//
+//   usersRef.doc(event.id).set(event
+//   ).then(this.getData)
+//
+// }
+
+
+app.get('/skyblue',(request,response)=>{
+  response.send('the sky is blue')
+})
+
+app.get('/timestamp',(request,response)=>{
+  response.send('hello timestamp')
+})
+
+
+
+
+
+exports.app = functions.https.onRequest(app);
