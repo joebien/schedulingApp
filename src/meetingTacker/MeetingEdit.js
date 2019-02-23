@@ -2,19 +2,71 @@ import React, { Component }from 'react'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
 
-  const selectDays = {
-  sunday:false,
-    monday:false,
-    tuesday:false,
-    wednesday:false,
-    thursday:false,
-    friday:false,
-    saturday:false,
-  }
-  
+//Styles
+const cell = {
+  margin : '0 2%',
+  width : '33%'
+}
+const td ={
+  height : '40%',
+  border:'solid blue',
+  verticalAlign: 'top',
+}
+const tableBox = {
+  border : 'solid red',
+  display : 'flex',
+  flexDirection : 'column',
+  alignItems : 'center',
+  height : '100%',
+  width : '100%',
+  justifyContent : 'space-between'
+}
+const flexRow = {
+  border: 'solid purple',
+  display: 'flex',
+  flexDirection: 'row',
+  //margin : '8%',
+  width : '100%'
+}
+const td1 ={
+  // height : '40%',
+  border:'solid orange',
+  verticalAlign: 'top',
+  width : '20%'
+}
+const bottomBox = {
+  width : '30%',
+  display : 'flex',
+  justifyContent :'space-around'
+}
+const noWrap = {
+  whiteSpace: 'nowrap',
+  display:'inline'
+}
+const component = {
+  border : 'solid purple',
+  width : '99%',
+  display : 'flex',
+  flexDirection  : 'column',
+  justifyContent : 'space-around'
+}
+const editTable = {
+  width : '90%',
+  height : '90%',
+  border : 'solid',
+}
+const checkBox = {
+  border : 'solid teal',
+  display : 'flex',
+  flexDirection : 'column',
+}
+const form = {
+  display : 'flex',
+  flexDirection :'row'
+}
+
+
 export default class MeetingEdit extends Component {
-
-
 
   constructor(props) {
       super(props);
@@ -39,28 +91,24 @@ export default class MeetingEdit extends Component {
           }
       }
     }
-
   }
-
 
   componentDidMount() {
       this.loadData();
   }
 
   handleDelete = () => {
-    
     this.deleteMeeting()
   }
 
   deleteMeeting = () => {
-console.log('thispmatchID' ,this.props.match.params.id)
     $.ajax({
         url: '/meetings/' + this.props.match.params.id,
         type: 'delete',
         data:'test',
         params:'test',
         success: function(data) {
-              
+
         }
     }).then(
             window.location.reload()
@@ -165,13 +213,13 @@ render() {
 
         MeetingEdit
           <form name="meetingChange" id='edit_form'></form>
-          <div style = {tableBox}>
+          <div style={tableBox}>
             //Input Fields & checkboxes
             <table style={editTable}>
               <tbody>
                 <tr>
-                  <td style = {td1}>
-                    <div style = {tableBox}>
+                  <td style={td1}>
+                    <div style={tableBox}>
                       <div style={flexRow}>
                         <div style={cell}> Name </div>
                         <input
@@ -196,11 +244,11 @@ render() {
                       </div>
                     </div>
                   </td>
-                  <td style = {td}>
+                  <td style={td}>
 
-                    <div style = {checkBox}>
+                    <div style={checkBox}>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                              checked={this.state.meeting.activeDays.sunday}
                              onChange={this.onChangeActiveDays}
@@ -208,7 +256,7 @@ render() {
                         Sunday
                       </label>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                                checked={meeting.activeDays.monday}
                                onChange={this.onChangeActiveDays}
@@ -216,7 +264,7 @@ render() {
                         Monday
                       </label>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                                checked={meeting.activeDays.tuesday}
                                onChange={this.onChangeActiveDays}
@@ -224,7 +272,7 @@ render() {
                         Tuesday
                       </label>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                                checked={meeting.activeDays.wednesday}
                                onChange={this.onChangeActiveDays}
@@ -232,7 +280,7 @@ render() {
                         Wednesday
                       </label>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                                checked={meeting.activeDays.thursday}
                                onChange={this.onChangeActiveDays}
@@ -240,7 +288,7 @@ render() {
                         Thursday
                       </label>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                                checked={meeting.activeDays.friday}
                                onChange={this.onChangeActiveDays}
@@ -248,7 +296,7 @@ render() {
                         Friday
                       </label>
 
-                      <label style = {noWrap}>
+                      <label style={noWrap}>
                         <input type="checkbox"
                                checked={meeting.activeDays.saturday}
                                onChange={this.onChangeActiveDays}
@@ -256,20 +304,20 @@ render() {
                       </label>
                     </div>
                   </td>
-                  <td style = {td}>
-                    <div style = {tableBox}>
+                  <td style={td}>
+                    <div style={tableBox}>
 
 
                         <div style={flexRow}>
                           <div style={cell}>Address</div>
-                            <textarea className = 'narrowTextArea' value={meeting.address1}
+                            <textarea className='narrowTextArea' value={meeting.address1}
                                     onChange={(e)=>this.handleOnChange('address1',e)}
                             />
                         </div>
 
                         <div style={flexRow}>
                           <div style={cell}>City State Zip</div>
-                            <textarea className = 'narrowTextArea' value={meeting.address2}
+                            <textarea className='narrowTextArea' value={meeting.address2}
                                     onChange={(e)=>this.handleOnChange('address2',e)}
                           />
 
@@ -277,7 +325,7 @@ render() {
 
                         <div style={flexRow}>
                           <div style={cell}>Phone Number</div>
-                            <textarea className = 'narrowTextArea' value={meeting.phoneNo}
+                            <textarea className='narrowTextArea' value={meeting.phoneNo}
                                     onChange={(e)=>this.handleOnChange('phoneNo',e)}
                           />
 
@@ -329,7 +377,7 @@ render() {
 
             <div style={bottomBox} >
               <Link to="/meetings" className='button'>Back to Meeting Tracker</Link>
-              <div  className='button' onClick = {this.handleDelete}>Delete</div>
+              <div  className='button' onClick={this.handleDelete}>Delete</div>
               <div className='button' onClick={this.submit}>Submit</div>
             </div>
           </div>
@@ -337,97 +385,3 @@ render() {
     )
   }
 }
-
-
-//Styles
-
-const cell = {
-  margin : '0 2%',
-  width : '33%'
-}
-
-const td ={
-  height : '40%',
-
-  border:'solid blue',
-  verticalAlign: 'top',
-}
-
-const tableBox = {
-  border : 'solid red',
-  display : 'flex',
-  flexDirection : 'column',
-  alignItems : 'center',
-  height : '100%',
-  width : '100%',
-
-  justifyContent : 'space-between'
-}
-
-const columnDiv = {
-  display : 'flex',
-  flexDirection : 'column',
-  border : 'solid pink'
-}
-
-const flexRow = {
-  border: 'solid purple',
-  display: 'flex',
-  flexDirection: 'row',
-  //margin : '8%',
-  width : '100%'
-}
-
-const td1 ={
-  // height : '40%',
-  border:'solid orange',
-  verticalAlign: 'top',
-  width : '20%'
-}
-
-
-
-const bottomBox = {
-  width : '30%',
-  display : 'flex',
-  justifyContent :'space-around'
-}
-
-const noWrap = {
-  whiteSpace: 'nowrap',
-  display:'inline'
-}
-
-
-
-const component = {
-  border : 'solid purple',
-  width : '99%',
-  display : 'flex',
-  flexDirection  : 'column',
-  justifyContent : 'space-around'
-}
-
-
-
-
-
-const editTable = {
-  width : '90%',
-  height : '90%',
-  border : 'solid',
-
-}
-
-const checkBox = {
-  border : 'solid teal',
-  display : 'flex',
-  flexDirection : 'column',
-}
-
-const form = {
-  display : 'flex',
-  flexDirection :'row'
-}
-
-

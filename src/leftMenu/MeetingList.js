@@ -1,5 +1,30 @@
 import React, { Component }from 'react'
 
+const ul = {
+  padding :'0%',
+  fontSize : '100%',
+  textAlign: 'center',
+  margin : '0'
+}
+const li = {
+  cursor:'nw-resize',
+  width : '96%',
+  fontSize :'small',
+  textAlign : 'center',
+  listStyle: 'none',
+  margin : '8% 2% ',
+  background : 'rgba(240, 246, 236, .5)',
+  boxShadow: '5px 5px 25px LightSlateGray',
+  transition : '.5s'
+}
+const component = {
+  display : 'flex',
+  flexDirection : 'column',
+  justifyContent : 'space-around',
+  width : '100%',
+  background : 'rgba(255,255,255,.3)',
+}
+
 export default class MeetingList extends Component {
 
     // convertTime(time) {
@@ -27,8 +52,8 @@ export default class MeetingList extends Component {
 
       return(
               <li
-              key = {(time).toString()+key.toString()}
-              style = {li}
+              key={(time).toString()+key.toString()}
+              style={li}
               onClick={()=>meetingSelect(m.id)}>
         {m.name}
               </li>
@@ -41,13 +66,11 @@ export default class MeetingList extends Component {
       return Number(a.key) - Number(b.key)
     })
 
-
-
     namesNtime = namesNtime.filter((m)=>m.props.children[0] !== 'Capitol Hill Meetings')
 
     return (
-        <div style = {component}>
-          <ul style = {ul}>
+        <div style={component}>
+          <ul style={ul}>
             {namesNtime}
           </ul>
 
@@ -55,35 +78,3 @@ export default class MeetingList extends Component {
     )
   }
 }
-
-
-const ul = {
-
-padding :'0%',
-fontSize : '100%',
-
-textAlign: 'center',
-margin : '0'
- 
-}
-
-const li = {
-  cursor:'nw-resize',
-  width : '96%',
-  fontSize :'small',
-  textAlign : 'center',
-  listStyle: 'none',
-  margin : '8% 2% ',
-  background : 'rgba(240, 246, 236, .5)',
-  boxShadow: '5px 5px 25px LightSlateGray',
-  transition : '.5s'
-}
-
-const component = {
-  display : 'flex',
-  flexDirection : 'column',
-  justifyContent : 'space-around',
-  width : '100%',
-  background : 'rgba(255,255,255,.3)',
-}
-

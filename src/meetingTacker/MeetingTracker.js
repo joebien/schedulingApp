@@ -1,26 +1,31 @@
 import React, { Component }from 'react'
-import ReactDOM from 'react-dom'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
-
-
 import MeetingAdd from './MeetingAdd'
+
+const component = {
+  height : '99%',
+  // border : 'solid red',
+  overflow : 'scroll'
+};
+const td = {
+  background :'Lavender'
+};
 
 class MeetingRow extends Component{
   render(){
     const{meeting} = this.props
 
-    const geoCode = JSON.stringify(meeting.geoCode)
     return (
 
         <tr>
-          <td style = {td}>
+          <td style={td}>
             <Link to={'/meetingEdit/' + this.props.meeting.id}>{this.props.meeting.id}</Link>
           </td>
-          <td style = {td}>{meeting.name}</td>
-          <td style = {td}>{meeting.days}</td>
-          <td style = {td}>{meeting.address1}</td>
-          <td style = {td}>{meeting.address2}</td>
+          <td style={td}>{meeting.name}</td>
+          <td style={td}>{meeting.days}</td>
+          <td style={td}>{meeting.address1}</td>
+          <td style={td}>{meeting.address2}</td>
         </tr>
     )
   }
@@ -37,7 +42,7 @@ class MeetingTable extends Component{
       return <MeetingRow {...this.props} key={key++} meeting={meeting} />
 
     },this);
- 
+
     return (
       <table>
 
@@ -51,11 +56,11 @@ class MeetingTable extends Component{
           </tr>
         </thead>
         <tbody>
-       
+
           {MeetingRows}
-           
+
         </tbody>
-      
+
       </table>
     )
   }
@@ -122,36 +127,22 @@ export default class MeetingTracker extends Component{
   render() {
 
     return (
-      <div style = {component}>
+      <div style={component}>
 
         <h1>Meeting Tracker</h1>
 
         {/*Table for creating new meeting*/}
         <MeetingAdd
-                loadData ={this.loadData}
-                addMeeting = {this.addMeeting}
+                loadData={this.loadData}
+                addMeeting={this.addMeeting}
                />
         {/*Table of all meetings in DataBase*/}
         <MeetingTable
-                loadMeeting = {this.loadData}
-                geocode = {this.state.geoCode}
+                loadMeeting={this.loadData}
+                geocode={this.state.geoCode}
                 meetings={this.state.meetings}/>
-        
+
       </div>
     )
   }
 }
-
-
-const component = {
-  height : '99%',
-  // border : 'solid red',
-  overflow : 'scroll'
-};
-
-const td = {
-  background :'Lavender'
-};
-
-
-

@@ -7,6 +7,50 @@ import Instructions from './instructions'
 import Container from './googleMap/mapContainer.js'
 import $ from "jquery"
 
+//Styles
+const component = {
+  overflow: 'hidden',
+  fontFamily: '"Lato", sans-serif',
+  border : 'solid purple 1px',
+  height : '100%',
+  display : 'flex',
+  flexDirection : 'row',
+  justifyContent : 'space-around',
+  alignItems : 'center'
+}
+const column = {
+  // background: 'rgba(0,0,0,0) rgba(152,251,152,.4)',
+  border : 'solid teal 1px',
+  width : '18%',
+  height:'100%',
+}
+const inner = {
+  height:'100%',
+  //border : 'dotted  1px'
+}
+const centerColumn = {
+  padding : '1%',
+  //marginTop : '-.2%',
+  display : 'flex',
+  flexDirection : 'column',
+  justifyContent : 'space-around',
+  height : '93%',
+  width : '60%',
+  //border : "solid teal 1px"
+}
+const info = {
+  display : 'block',
+  // border : 'solid yellow ',
+  height : '30%'
+}
+const map = {
+  marginTop : '2%',
+  border : 'solid DarkSlateGray 1px',
+  height : '45%'
+}
+
+
+
 export default class Home extends Component {
 
   constructor(props) {
@@ -43,43 +87,32 @@ export default class Home extends Component {
         }],
 
         days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
-
       }
+
+
         this.handleSelectDay = this.handleSelectDay.bind(this)
-        // this.loadData = this.loadData.bind(this)
-        this.lowerCase = this.lowerCase.bind(this) 
-        this.meetingSelect = this.meetingSelect.bind(this) 
+        this.lowerCase = this.lowerCase.bind(this)
+        this.meetingSelect = this.meetingSelect.bind(this)
         this.loadAllMeetings = this.loadAllMeetings.bind(this)
   }
 
   componentDidMount() {
-
-
     this.loadAllMeetings()
-
-
   }
-
 
   loadAllMeetings=()=>{ console.log('loadAllMeetings fired')
 
     const filter = {}
 
-
     $.ajax('/allmeetings', {data: filter})
             .then(res => {
-
                       this.setState({
                         allMeetings:res,
                         isLoaded:true
                       },()=>this.meetingSelect('blank')
                       )
-
-            }
-            )
+            })
   }
-
 
   meetingSelect = (meetingId) => {
 
@@ -88,17 +121,11 @@ export default class Home extends Component {
     this.setState({focusMeeting:focusMeeting[0]})
   }
 
-
-
-
-
-
   handleSelectDay=(day)=>{
      //this.setState({focusDay : day})
 
     this.loadData(day)
   }
-
 
   loadData=(day)=>{
     console.log('loadDay ',day)
@@ -110,7 +137,6 @@ export default class Home extends Component {
               this.setState({meetings: data})
             }.bind(this));
   }
-
 
   lowerCase=(word)=>{
     return String.fromCharCode( word.charCodeAt(0) + 32 ) + word.slice(1)
@@ -132,7 +158,6 @@ export default class Home extends Component {
 
                             handleSelect={this.handleSelectDay}
                             meetingSelect={this.meetingSelect}
-
                     />
 
                   </div>
@@ -140,30 +165,26 @@ export default class Home extends Component {
 
                 <div style={centerColumn}>
 
-                  <div>{this.state.message}</div>
-                  <div style={info}>
+                <div>{this.state.message}</div>
 
-
+                <div style={info}>
 
                     <Info focusMeeting={focusMeeting}/>
-                  </div>
 
-                  <div style={map}>
+                </div>
+
+                <div style={map}>
+
                     <Container
                             useMarker={this.state.useMarker}
                             meeting={focusMeeting}
                             meetingSelect={this.meetingSelect}
-                            geoCode = {geoCode}
+                            geoCode={geoCode}
                     />
 
+                </div>
 
-                  </div>
-
-                  <Instructions
-                          focusMeeting={focusMeeting}
-                    />
-
-
+                  <Instructions focusMeeting={focusMeeting}/>
 
                 </div>
 
@@ -173,80 +194,11 @@ export default class Home extends Component {
 
                     <AllMeetings
                             meetingSelect={this.meetingSelect}
-                            allmeetings={this.state.allMeetings}/>
-
-
+                            allmeetings={this.state.allMeetings}
+                    />
                   </div>
                 </div>
-
               </div>
-
       )
-
   }
 }
-
-//Styles
-
-const instructions = {
-
-  border : 'solid white 1px',
-  display : 'flex',
-  flexDirection : 'column',
-  justifyContent : 'space-around',
-  alignItems : 'center',
-  height : '10%',
-  width : '100%',
-}
-
-const component = {
-  overflow: 'hidden',
-  fontFamily: '"Lato", sans-serif',
-  border : 'solid purple 1px',
-  height : '100%',
-  display : 'flex',
-  flexDirection : 'row',
-  justifyContent : 'space-around',
-  alignItems : 'center'
-}
-
-const column = {
-  // background: 'rgba(0,0,0,0) rgba(152,251,152,.4)',
-  border : 'solid teal 1px',
-  width : '18%',
-  height:'100%',
-
-
-}
-
-const inner = {
-  height:'100%',
-
-  //border : 'dotted  1px'
-}
-
-const centerColumn = {
-  padding : '1%',
-  //marginTop : '-.2%',
-  display : 'flex',
-  flexDirection : 'column',
-  justifyContent : 'space-around',
-  height : '93%',
-  width : '60%',
-  //border : "solid teal 1px"
-}
-
-const info = {
-  display : 'block',
-  // border : 'solid yellow ',
-  height : '30%'
-}
-
-const map = {
-  marginTop : '2%',
-  border : 'solid DarkSlateGray 1px',
-  height : '45%'
-}
-
-
-

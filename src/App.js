@@ -6,55 +6,13 @@ import Main from './Main'
 import roots from './img/roots.jpg'
 import diagStripes from './img/stripedPat.jpg'
 
-export default class App extends Component {
-
-  render() {
- 
-      return (
-
-        <div style = {component}>
-          <div style = {componentBknd}/>
-          <div style = {inner}>
-            <div style = {innerBkngd}/>
-
-              <div style = {bkrnd}/>
-            <div  style = {stripeBknd} />
-
-              <div  style = {headerBox} >
-                <Header header = {header}/>
-              </div>
-
-              <div style = {main}>
-                <Main/>
-              </div>
-
-              <div style = {footer}>
-                <div style = {rootBox}>
-                  <div style = {vertL}/>
-                   <img style = {rootL} src={roots} alt={'roots'}/>
-                </div>
-
-                  <Footer/>
-
-                  <div style = {rootBoxR}>
-                  <div style = {vertLRt}/>
-                   <img style = {rootR} src={roots} alt={'roots'} />
-                </div>
-              </div>
-
-          </div>
-        </div>
-
-      )
-  }
-}
 
 const component = {
   height : '100vh',
   width : '100vw',
   display : 'flex',
   justifyContent : 'center',
-  alignItems : 'center',
+  alignItems : 'ceter',
   position : 'relative'
 }
 
@@ -184,7 +142,7 @@ const vertLRt = {
 const header = {
 
   //border : 'solid green',
-  
+
   //background: 'linear-gradient(to bottom right, lavender, thistle)',
 
   textAlign:'center',
@@ -210,4 +168,47 @@ const headerBox = {
 const main = {position : 'relative',
   //border : 'dotted red',
   height : '83%'
+}
+
+export default class App extends Component {
+
+  render() {
+
+      return (
+
+        <div style={component}>
+          <div style={componentBknd}/>
+          <div style={inner}>
+            <div style={innerBkngd}/>
+
+              <div style={bkrnd}/>
+            <div  style={stripeBknd} />
+
+              <div  style={headerBox} >
+                <Header header={header}/>
+              </div>
+
+              <div style={main}>
+                <Main/>
+              </div>
+
+              <div style={footer}>
+                <div style={rootBox}>
+                  <div style={vertL}/>
+                   <img style={rootL} src={roots} alt={'roots'}/>
+                </div>
+
+                  <Footer/>
+
+                  <div style={rootBoxR}>
+                  <div style={vertLRt}/>
+                   <img style={rootR} src={roots} alt={'roots'} />
+                </div>
+              </div>
+
+          </div>
+        </div>
+
+      )
+  }
 }

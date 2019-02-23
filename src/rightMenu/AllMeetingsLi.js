@@ -1,5 +1,26 @@
 import React, { Component }from 'react'
-import GoogleMapReact from 'google-map-react'
+
+const li = {
+  //border : 'solid 1px',
+  margin : '2%',
+  listStyleType: 'none',
+  //background : 'white',
+}
+const liDiv = {
+  position : 'relative',
+  paddingRight: '1%',
+  background : '#E4D9D9',
+  display : 'inline-block',
+  left : 0,
+  transition : '.3s'
+}
+const liDivHover = {
+        ...liDiv,
+        ...{
+          left : 10,
+          background : 'white'
+        }
+}
 
 export default class Li extends Component {
 
@@ -34,31 +55,4 @@ export default class Li extends Component {
             </li>
     )
   }
-}
-
-const li = {
-
-  //border : 'solid 1px',
-  margin : '2%',
-  listStyleType: 'none',
-
-  //background : 'white',
-}
-
-const liDiv = {
-  position : 'relative',
-  paddingRight: '1%',
-  background : '#E4D9D9',
-  display : 'inline-block',
-  left : 0,
-  transition : '.3s'
-}
-
-const liDivHover = {
-        ...liDiv,
-        ...{
-          left : 10,
-          background : 'white'
-        }
-
 }

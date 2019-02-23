@@ -4,36 +4,53 @@ import $ from "jquery"
 const defaultAddress = '1 East capitol washington dc 20002'
 
 
+    //Styles////////////
+    const flexRow = {
+      // border:'solid red',
+      display:'flex',
+      flexDirection : 'row',
+      justifyContent : 'space-between',
+      //margin : '8%',
+      width : '100%'
+    }
+    const label = {
+      // border:'solid red',
+      display:'flex',
+      flexDirection : 'row',
+      justifyContent : 'flex-end'
+    }
+    const divCol = {
+      display: 'flex',
+      flexDirection: 'column',
+    }
+    const input = {
+      display : 'flex',
+      flexDirection : 'row'
+    }
+    const td = {
+      border:'solid',
+      whiteSpace:'pre'
+    }
+    const table = {
+      border : 'solid',
+    }
+    const checkBox = {
+      display : 'flex',
+      flexDirection : 'column'
+    }
+
+
 export default class MeetingAdd extends Component{
 
   state=({
     geoCode:{lat:'123',lng:'456'}
   })
 
-
-
   handleSubmit = (e) => {
 
     const addMeeting = this.props.addMeeting
 
     e.preventDefault();
-
-    // const valFields = ['name','days','address1','address2']
-
-    //Get values from MeetingTable form
-    // this.form = this.getForm()
-
-    // function validateForm(form) {
-    // let result = true
-    // valFields.forEach( (field)=>  {if( !form[field].value ) {
-    //   form[field].placeholder = 'Please enter ' + form[field].name
-    //
-    //   result = false
-    //   }
-    // })
-    // return result
-    // }
-    // if ( !validateForm(this.form) ) return
 
     //load all data from addMeeting form to variable
     const form = document.forms.meetingAdd
@@ -59,15 +76,14 @@ export default class MeetingAdd extends Component{
           error: function (jqXHR, textStatus, errorThrown)
           {
             let errorText = jqXHR.responseText.split('<br>')[0]
-          }.bind(this)
+            console.log(errorText)
+          }
 
         })
 
     })
 
     //Call geocode, then post new meeting with geocode to db
-
-
 
 
     getGeoCode.then((latlng)=>{
@@ -117,7 +133,7 @@ export default class MeetingAdd extends Component{
     //Form to create new meeting and submit to server
       return (
         <div >Create new meeting
-          
+
           <form name="meetingAdd" id='add_form' >
 
           </form>
@@ -126,7 +142,7 @@ export default class MeetingAdd extends Component{
             <tbody>
               <tr>
                 <td style={td}>
-                  <div style ={divCol}>
+                  <div style={divCol}>
                     <div style={label}>Id (not shown on schedule)</div>
                     <div style={label}>Name</div>
                     <div style={label}>Days</div>
@@ -136,29 +152,29 @@ export default class MeetingAdd extends Component{
 
                 <td style={td}>
                   <div style={divCol}>
-                    <input ref = {(ref)=>this.focus(ref)}
+                    <input ref={(ref)=>this.focus(ref)}
                            type="text"
                            name="id"
                            label="id"
                            form='add_form'
-                           placeholder ="id"
+                           placeholder="id"
                            required/>
 
-                    <input ref = {(ref)=>this.focus(ref)}
+                    <input ref={(ref)=>this.focus(ref)}
                            type="text"
                            name="name"
                            label="name"
                            form='add_form'
-                           placeholder ="name"
+                           placeholder="name"
                            required/>
 
-                    <input ref = {(ref)=>this.focus(ref)}
+                    <input ref={(ref)=>this.focus(ref)}
                            type="text"
                            name="days"
                            label="days"
                            form='add_form'/>
 
-                    <input ref = {(ref)=>this.focus(ref)}
+                    <input ref={(ref)=>this.focus(ref)}
                            type="text"
                            name="time"
                            label="time"
@@ -170,49 +186,49 @@ export default class MeetingAdd extends Component{
                 <td>
                           <div style={checkBox}>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input type="checkbox"
                                       name="sunday"
                                       form='add_form'/>
                               Sunday
                             </div>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input type="checkbox"
                                       name="monday"
                                       form='add_form'/>
                               Monday
                             </div>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input type="checkbox"
                                       name="tuesday"
                                       form='add_form'/>
                               Tuesday
                              </div>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input type="checkbox"
                                      name="wednesday"
                                      form='add_form'/>
                               Wednesday
                             </div>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input type="checkbox"
                                      name="thursday"
                                      form='add_form'/>
                               Thursday
                             </div>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input  type="checkbox"
                                       name="friday"
                                       form='add_form'/>
                               Friday
                             </div>
 
-                            <div style = {input}>
+                            <div style={input}>
                               <input  type="checkbox"
                                       name="saturday"
                                       form='add_form'/>
@@ -222,21 +238,21 @@ export default class MeetingAdd extends Component{
                 </td>
 
                 <td style={td}>
-                  <div style = {flexRow}>
+                  <div style={flexRow}>
                     <div className='label'>Address</div>
                     <input size='50'
-                           ref = {(ref)=>this.focus(ref)}
+                           ref={(ref)=>this.focus(ref)}
                            type="text"
                            name="address1"
                            label="address1"
                            form='add_form'/>
                   </div>
 
-                  <div style = {flexRow}>
+                  <div style={flexRow}>
                     <div className='label'>City State Zip</div>
 
                     <input size='50'
-                            ref = {(ref)=>this.focus(ref)}
+                            ref={(ref)=>this.focus(ref)}
                            type="text"
                            name="address2"
                            label="address2"
@@ -245,11 +261,11 @@ export default class MeetingAdd extends Component{
 
                   </div>
 
-                  <div style = {flexRow}>
+                  <div style={flexRow}>
                     <div className='label'>Phone Nmbr </div>
 
                   <input size='50'
-                         ref = {(ref)=>this.focus(ref)}
+                         ref={(ref)=>this.focus(ref)}
                          type="text"
                          name="phoneNo"
                          label="phoneNo"
@@ -265,8 +281,8 @@ export default class MeetingAdd extends Component{
                 <td style={td}>Restrictions</td>
                 <td style={td}>
                   <textarea
-                          cols = '40'
-                          rows = '4'
+                          cols='40'
+                          rows='4'
                           type='text'
                           name='type'
                           label='type'
@@ -278,8 +294,8 @@ export default class MeetingAdd extends Component{
                 <td style={td}>Instructions</td>
                 <td colSpan='3' style={td}>
                   <textarea
-                              cols = '110'
-                              rows = '4'
+                              cols='110'
+                              rows='4'
                               type='text'
                               name='instructions'
                               label='instructions'
@@ -302,51 +318,3 @@ export default class MeetingAdd extends Component{
       )
     }
   }
-
-//Styles////////////
-const flexRow = {
-  // border:'solid red',
-  display:'flex',
-  flexDirection : 'row',
-  justifyContent : 'space-between',
-  //margin : '8%',
-  width : '100%'
-}
-
-const flexRow2 = {...flexRow,
-        ...{justifyContent : 'flex-start',}
-
-}
-
-    const label = {
-      // border:'solid red',
-      display:'flex',
-      flexDirection : 'row',
-      justifyContent : 'flex-end'
-    }
-
-    const divCol = {
-      display: 'flex',
-      flexDirection: 'column',
-    }
-
-    const input = {
-      display : 'flex',
-      flexDirection : 'row'
-    }
-
-    const td = {
-      border:'solid',
-      whiteSpace:'pre'
-    }
-
-    const table = {
-      border : 'solid',
-
-    }
-
-    const checkBox = {
-      display : 'flex',
-      flexDirection : 'column'
-
-    } 

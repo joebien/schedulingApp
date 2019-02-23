@@ -4,6 +4,14 @@ import Home from './home/Home'
 import MeetingTracker from './meetingTacker/MeetingTracker'
 import MeetingEdit from './meetingTacker/MeetingEdit'
 
+const main ={
+  boxSizing: 'border-box',
+  // border :'solid #efc660 2px',
+  width : '100%',
+  height : '100%',
+  background : 'rgba(255, 231, 158, .5)',
+}
+
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts
@@ -27,13 +35,4 @@ export default class Main extends Component {
       )
     }
 
-}
-
-
-const main ={
-  boxSizing: 'border-box',
-  // border :'solid #efc660 2px',
-  width : '100%',
-  height : '100%',
-  background : 'rgba(255, 231, 158, .5)',
 }

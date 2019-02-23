@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
-
-
+const mapBox = {
+  // border:'solid red 5px',
+  width:'100%',
+  height:'100%'
+}
 
 export default class Container extends Component {
 
-state={}
-
-
+  state={}
 
   componentDidMount() {
     const ApiKey = 'AIzaSyB8eWeZkUtvjK9unC_088yqJPJdSgvce2c';
@@ -23,7 +24,6 @@ state={}
 
   render() {
     const {geoCode, meeting, useMarker} = this.props
-
 
     //init map
     if(this.state.mapIsReady) {
@@ -48,7 +48,7 @@ state={}
 
       if (useMarker) {
 
-        let marker = new window.google.maps.Marker({
+        let marker = new window.google.maps.Marker({ // eslint-disable-line no-unused-vars
           position: {lat: geoCode.lat, lng: geoCode.lng},
           map: map,
           title: meeting.name,
@@ -71,15 +71,3 @@ this de map
     )
   }
 }
-
-const label = {
-  //background: 'white',
-  //border: 'solid green'
-}
-
-const mapBox = {
-  // border:'solid red 5px',
-  width:'100%',
-  height:'100%'
-}
-

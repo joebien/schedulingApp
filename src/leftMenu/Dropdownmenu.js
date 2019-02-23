@@ -3,6 +3,54 @@ import MeetingList from './MeetingList'
 import $ from "jquery"
 
 
+//STYLES/////
+    const component = {
+      position : 'relative',
+      height : '100%',
+      display : 'flex',
+      flexDirection : 'column',
+      alignItems: 'center',
+      fontFamily: '"Lato", sans-serif',
+      fontStyle: 'Normal',
+      fontSize: '25px',
+    }
+    const label = {
+      width : '95%',
+      border : 'solid green .5px',
+      background : 'rgba(240, 246, 236, .5)',
+      fontSize : '25px',
+      textAlign : 'center',
+      marginTop :'12%'
+    }
+    const dayBox = {
+      position: 'relative',
+      width: '98%',
+      height : '45%',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop :'8%',
+      cursor:'pointer',
+    }
+    const mList = {
+      position : 'relative',
+      display : 'flex',
+      flexDirection : 'column',
+      alignItems : 'center',
+      width : '85%',
+      fontSize :'100%',
+      cursor:'pointer',
+    }
+    const dayHead ={
+      fontSize : '12px',
+      border : 'solid teal .5px',
+      textAlign : 'center',
+      width : '100%',
+      margin : '9% 0% ',
+      padding : '2%',
+      background: 'rgba(170,255,236,.2)'
+    }
+
+
 
 export default class Dropdownmenu extends Component{
 
@@ -11,7 +59,7 @@ export default class Dropdownmenu extends Component{
       this.state = {
         data : 'data',
         fold : false,
-      } 
+      }
 
   }
  //Toggle collapse days {dayBox}
@@ -55,11 +103,11 @@ export default class Dropdownmenu extends Component{
   render(){
 
     return (
-            <div style = {component}>
-              <div style = {label}> Search by Day </div>
-              <div  style = {dayBox}>
+            <div style={component}>
+              <div style={label}> Search by Day </div>
+              <div  style={dayBox}>
 
-                <ul className = 'ul'>
+                <ul className='ul'>
 
                   <DayList loadData={this.loadData}/>
 
@@ -67,8 +115,8 @@ export default class Dropdownmenu extends Component{
 
               </div>
 
-              <div style = {mList}>
-                <div style = {dayHead}>{this.props.focusDay} </div>
+              <div style={mList}>
+                <div style={dayHead}>{this.props.focusDay} </div>
 
                 <MeetingList meetings={this.state.meetings} {...this.props}/>
 
@@ -100,60 +148,3 @@ class DayList extends Component{
     )
   }
 }
-
-
-
-//STYLES/////
-    const component = {
-      position : 'relative',
-      height : '100%',
-      display : 'flex',
-      flexDirection : 'column',
-      alignItems: 'center',
-      fontFamily: '"Lato", sans-serif',
-      fontStyle: 'Normal',
-      fontSize: '25px',
-    }
-
-    const label = {
-      width : '95%',
-      border : 'solid green .5px',
-      background : 'rgba(240, 246, 236, .5)',
-      fontSize : '25px',
-      textAlign : 'center',
-      marginTop :'12%'
-    }
-
-    const dayBox = {
-      position: 'relative',
-      width: '98%',
-      height : '45%',
-      display: 'flex',
-      flexDirection: 'column',
-      marginTop :'8%',
-      cursor:'pointer',
-    }
-
-    const mList = {
-      position : 'relative',
-      display : 'flex',
-      flexDirection : 'column',
-      alignItems : 'center',
-      width : '85%',
-      fontSize :'100%',
-      cursor:'pointer',
-    }
-
-    const dayHead ={
-      fontSize : '12px',
-      border : 'solid teal .5px',
-      textAlign : 'center',
-      width : '100%',
-      margin : '9% 0% ',
-      padding : '2%',
-      background: 'rgba(170,255,236,.2)'
-    }
-
-
-
-   
