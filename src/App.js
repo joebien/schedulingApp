@@ -6,7 +6,7 @@ import Main from './Main'
 import roots from './img/roots.jpg'
 import diagStripes from './img/stripedPat.jpg'
 
-
+//Styles
 const component = {
   height : '100vh',
   width : '100vw',
@@ -15,7 +15,6 @@ const component = {
   alignItems : 'ceter',
   position : 'relative'
 }
-
 const inner = {
   position : 'relative',
   display : 'flex',
@@ -26,7 +25,6 @@ const inner = {
   height : '95%',
   width : '95%'
 }
-
 const componentBknd = {
   position : 'absolute',
   background : '#63323a',
@@ -34,7 +32,6 @@ const componentBknd = {
   width : '100%',
   zIndex : -33
 }
-
 const innerBkngd = {
   position : 'absolute',
   height : '100%',
@@ -42,7 +39,6 @@ const innerBkngd = {
   background : 'white',
   zIndex : '-2'
 }
-
 const bkrnd = {
   width : '100%',
   height : '100%',
@@ -51,8 +47,6 @@ const bkrnd = {
   zIndex : '-1',
   opacity : '.5'
 }
-
-
 const stripeBknd = {
   width : '100%',
   height : '100%',
@@ -63,7 +57,6 @@ const stripeBknd = {
 
 
 }
-
 const footer = {
   display : 'flex',
   flexDirection : 'row',
@@ -73,7 +66,6 @@ const footer = {
   height : '12%',
   width : '100%',
 }
-
 const rootL = {
 
  color : 'red',
@@ -81,7 +73,6 @@ const rootL = {
  height : '100%',
  transform : 'scalex(-1)'
 }
-
 const rootR = {
 
  color : 'red',
@@ -89,7 +80,6 @@ const rootR = {
  height : '100%',
  //transform : 'scalex(-1)'
 }
-
 const rootBox = {
   //border : 'solid red',
   display : 'flex',
@@ -102,7 +92,6 @@ const rootBox = {
   bottom : '7%',
   left : '6%',
 }
-
 const rootBoxR = {
   display : 'flex',
   flexDirection : 'column',
@@ -114,7 +103,6 @@ const rootBoxR = {
   bottom : '7%',
   right : '6%',
 }
-
 const vertL = {
   marginLeft : '9%',
   height : '250%',
@@ -126,7 +114,6 @@ const vertL = {
   background: 'linear-gradient( rgba(0,0,0,0), black)',
   zIndex : '-1',
 }
-
 const vertLRt = {
   marginRight : '9%',
   height : '250%',
@@ -138,7 +125,6 @@ const vertLRt = {
   zIndex : '-1',
   background: 'linear-gradient( rgba(0,0,0,0), black)',
 }
-
 const header = {
 
   //border : 'solid green',
@@ -156,15 +142,10 @@ const header = {
   flexDirection : 'row',
   justifyContent : 'space-around'
 }
-
-
 const headerBox = {
   //border : 'dotted red 1px',
   height : '3%'
 }
-
-
-
 const main = {position : 'relative',
   //border : 'dotted red',
   height : '83%'

@@ -223,7 +223,8 @@ render() {
                       <div style={flexRow}>
                         <div style={cell}> Name </div>
                         <input
-                                type="text"
+                              type="text"
+                              size="55"
                                value={meeting.name}
                                placeholder={'name'}
                                onChange={(e)=>this.handleOnChange('name',e)}/>
