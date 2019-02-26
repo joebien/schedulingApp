@@ -52,8 +52,9 @@ export default class MeetingList extends Component {
 
       return(
               <li
+              className='mlistItem'
+              tabindex='0'
               key={(time).toString()+key.toString()}
-              style={li}
               onClick={()=>meetingSelect(m.id)}>
         {m.name}
               </li>
