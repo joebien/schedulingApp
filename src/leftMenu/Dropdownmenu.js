@@ -64,12 +64,12 @@ export default class Dropdownmenu extends Component{
   }
  //Toggle collapse days {dayBox}
 
-  hover(ref){
-    if (ref) {ref.addEventListener('mouseover',()=>ref.style.transform = 'scale(1.12)')
+  // hover(ref){
+  //   if (ref) {ref.addEventListener('mouseover',()=>ref.style.transform = 'scale(1.12)')
 
-      if (ref) ref.addEventListener('mouseout',()=>ref.style.transform = 'scale(.98)')
-    }
-  }
+  //     if (ref) ref.addEventListener('mouseout',()=>ref.style.transform = 'scale(.98)')
+  //   }
+  // }
 
 
   foldList(dir){console.log('fold')
@@ -85,13 +85,11 @@ export default class Dropdownmenu extends Component{
   nextKey = 0
 
   loadData=(day)=>{
-    console.log('newloadDay ',day)
+  
     const filter = this.lowerCase(day)
-
 
     $.ajax('/meetings', {data: filter})
             .then(res=> {
-              console.log('data ',res)
               this.setState({meetings: res})
             })
   }
@@ -136,7 +134,7 @@ class DayList extends Component{
     const dayItems = days.map(
             (day)=>
                     <li key={key++} className='liDay'>
-                      <div className='day'
+                      <div tabindex='0' className='day'
                            onClick={()=>this.props.loadData(day)}>
                         {day}
                       </div>

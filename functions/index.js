@@ -204,7 +204,7 @@ console.log('req.params ',req.params)
 
 const theport = process.env.PORT || 5010;
 
-const server = app.listen(theport, function() {
+const server = app.listen(theport, ()=> {
 
   console.log("Started server at port", theport);
 

@@ -1,11 +1,12 @@
-import React, { Component }from 'react'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
+import React, { Component }from 'react'
 
 //Styles
 const cell = {
   margin : '0 2%',
-  width : '33%'
+  width : '33%',
+
 }
 const td ={
   height : '40%',
@@ -213,168 +214,171 @@ render() {
 
         MeetingEdit
           <form name="meetingChange" id='edit_form'></form>
-          <div style={tableBox}>
-            //Input Fields & checkboxes
-            <table style={editTable}>
-              <tbody>
-                <tr>
-                  <td style={td1}>
-                    <div style={tableBox}>
-                      <div style={flexRow}>
-                        <div style={cell}> Name </div>
-                        <input
-                              type="text"
-                              size="55"
-                               value={meeting.name}
-                               placeholder={'name'}
-                               onChange={(e)=>this.handleOnChange('name',e)}/>
-                      </div>
-                      <div style={flexRow}>
-                        <div style={cell}> Days </div>
-                        <input type="text"
-                               value={meeting.days}
-                               placeholder={'days'}
-                               onChange={(e)=>this.handleOnChange('days',e)}/>
-                      </div>
-                      <div style={flexRow}>
-                        <div style={cell}> Time </div>
-                        <input type="text"
-                               value={meeting.time}
-                               placeholder={'time'}
-                               onChange={(e)=>this.handleOnChange('time',e)}/>
-                      </div>
-                    </div>
-                  </td>
-                  <td style={td}>
+         
+      
+            <div style={tableBox}>
 
-                    <div style={checkBox}>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                             checked={this.state.meeting.activeDays.sunday}
-                             onChange={this.onChangeActiveDays}
-                             id="sunday"/>
-                        Sunday
-                      </label>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                               checked={meeting.activeDays.monday}
-                               onChange={this.onChangeActiveDays}
-                               id="monday"/>
-                        Monday
-                      </label>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                               checked={meeting.activeDays.tuesday}
-                               onChange={this.onChangeActiveDays}
-                               id="tuesday"/>
-                        Tuesday
-                      </label>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                               checked={meeting.activeDays.wednesday}
-                               onChange={this.onChangeActiveDays}
-                               id="wednesday"/>
-                        Wednesday
-                      </label>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                               checked={meeting.activeDays.thursday}
-                               onChange={this.onChangeActiveDays}
-                               id="thursday"/>
-                        Thursday
-                      </label>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                               checked={meeting.activeDays.friday}
-                               onChange={this.onChangeActiveDays}
-                               id="friday"/>
-                        Friday
-                      </label>
-
-                      <label style={noWrap}>
-                        <input type="checkbox"
-                               checked={meeting.activeDays.saturday}
-                               onChange={this.onChangeActiveDays}
-                               id="saturday"/>Saturday
-                      </label>
-                    </div>
-                  </td>
-                  <td style={td}>
-                    <div style={tableBox}>
-
-
+              {/* Input Fields & checkboxes*/}
+              <table style={editTable}>
+                <tbody>
+                  <tr>
+                    <td style={td1}>
+                      <div style={tableBox}>
                         <div style={flexRow}>
-                          <div style={cell}>Address</div>
-                            <textarea className='narrowTextArea' value={meeting.address1}
-                                    onChange={(e)=>this.handleOnChange('address1',e)}
+                          <div style={cell}> Name </div>
+                            <input  type="text"
+                                    size="55"
+                                    value={meeting.name}
+                                    placeholder={'name'}
+                                    onChange={(e)=>this.handleOnChange('name',e)}/>
+                        </div>
+                        <div style={flexRow}>
+                          <div style={cell}> Days </div>
+                            <input  type="text"
+                                    size="55"
+                                    value={meeting.days}
+                                    placeholder={'days'}
+                                    onChange={(e)=>this.handleOnChange('days',e)}/>
+                        </div>
+                        <div style={flexRow}>
+                          <div style={cell}> Time </div>
+                            <input type="text"
+                                  value={meeting.time}
+                                  placeholder={'time'}
+                                  onChange={(e)=>this.handleOnChange('time',e)}/>
+                        </div>
+                      </div>
+                    </td>
+                    <td style={td}>
+
+                      <div style={checkBox}>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                               checked={this.state.meeting.activeDays.sunday}
+                               onChange={this.onChangeActiveDays}
+                               id="sunday"/>
+                          Sunday
+                        </label>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                                 checked={meeting.activeDays.monday}
+                                 onChange={this.onChangeActiveDays}
+                                 id="monday"/>
+                          Monday
+                        </label>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                                 checked={meeting.activeDays.tuesday}
+                                 onChange={this.onChangeActiveDays}
+                                 id="tuesday"/>
+                          Tuesday
+                        </label>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                                 checked={meeting.activeDays.wednesday}
+                                 onChange={this.onChangeActiveDays}
+                                 id="wednesday"/>
+                          Wednesday
+                        </label>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                                 checked={meeting.activeDays.thursday}
+                                 onChange={this.onChangeActiveDays}
+                                 id="thursday"/>
+                          Thursday
+                        </label>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                                 checked={meeting.activeDays.friday}
+                                 onChange={this.onChangeActiveDays}
+                                 id="friday"/>
+                          Friday
+                        </label>
+
+                        <label style={noWrap}>
+                          <input type="checkbox"
+                                 checked={meeting.activeDays.saturday}
+                                 onChange={this.onChangeActiveDays}
+                                 id="saturday"/>Saturday
+                        </label>
+                      </div>
+                    </td>
+                    <td style={td}>
+                      <div style={tableBox}>
+
+
+                          <div style={flexRow}>
+                            <div style={cell}>Address</div>
+                              <textarea className='narrowTextArea' value={meeting.address1}
+                                      onChange={(e)=>this.handleOnChange('address1',e)}
+                              />
+                          </div>
+
+                          <div style={flexRow}>
+                            <div style={cell}>City State Zip</div>
+                              <textarea className='narrowTextArea' value={meeting.address2}
+                                      onChange={(e)=>this.handleOnChange('address2',e)}
                             />
-                        </div>
 
-                        <div style={flexRow}>
-                          <div style={cell}>City State Zip</div>
-                            <textarea className='narrowTextArea' value={meeting.address2}
-                                    onChange={(e)=>this.handleOnChange('address2',e)}
+                          </div>
+
+                          <div style={flexRow}>
+                            <div style={cell}>Phone Number</div>
+                              <textarea className='narrowTextArea' value={meeting.phoneNo}
+                                      onChange={(e)=>this.handleOnChange('phoneNo',e)}
+                            />
+
+                          </div>
+
+
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style={flexRow}>
+                          <div style={cell}>Restrictions</div>
+
+                          <textarea
+                                  cols='50'
+                                  rows='4'
+                                  type="text"
+                                  value={meeting.type}
+                                  placeholder={'type'}
+                                  onChange={(e)=>this.handleOnChange('type',e)}
                           />
 
-                        </div>
+                      </div>
 
-                        <div style={flexRow}>
-                          <div style={cell}>Phone Number</div>
-                            <textarea className='narrowTextArea' value={meeting.phoneNo}
-                                    onChange={(e)=>this.handleOnChange('phoneNo',e)}
-                          />
+                    </td>
+                  </tr>
 
-                        </div>
+                  <tr>
+                    <td>
+                      <div style={flexRow}>
+                        <div style={cell}>Instructions</div>
 
+                          <textarea
+                                  cols='80'
+                                  rows='4'
+                                  type="text"
+                                  value={meeting.instructions}
+                                  placeholder={'instructions'}
+                                  onChange={(e)=>this.handleOnChange('instructions',e)}/>
 
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div style={flexRow}>
-                        <div style={cell}>Restrictions</div>
+                      </div>
 
-                        <textarea
-                                cols='50'
-                                rows='4'
-                                type="text"
-                                value={meeting.type}
-                                placeholder={'type'}
-                                onChange={(e)=>this.handleOnChange('type',e)}
-                        />
+                    </td>
+                  </tr>
 
-                    </div>
-
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div style={flexRow}>
-                      <div style={cell}>Instructions</div>
-
-                        <textarea
-                                cols='80'
-                                rows='4'
-                                type="text"
-                                value={meeting.instructions}
-                                placeholder={'instructions'}
-                                onChange={(e)=>this.handleOnChange('instructions',e)}/>
-
-                    </div>
-
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
+                </tbody>
+              </table>
 
             <div style={bottomBox} >
               <Link to="/meetings" className='button'>Back to Meeting Tracker</Link>

@@ -60,8 +60,6 @@ export default class MeetingAdd extends Component{
     //Get geocode from address
     const getGeoCode = new Promise((resolve, reject) => {
 
-      console.log('getGeoCode fired')
-
       let address = form.address1.value + form.address2.value || defaultAddress
 
         $.ajax({
@@ -103,6 +101,8 @@ export default class MeetingAdd extends Component{
                 })
 
       this.props.loadData()
+
+      document.forms.meetingAdd.reset()
 
     })
 
